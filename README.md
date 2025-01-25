@@ -76,5 +76,5 @@ Questo progetto rappresenta un punto di partenza per ulteriori esplorazioni nel 
 ## Accesso al Progetto Completo
 Per visualizzare il progetto completo (codice, dataset e risultati) è possibile accedere alla cartella condivisa su Google Drive:
 
-[**Link Google Drive**](https://drive.google.com/drive/u/2/folders/1JG1K9eyDDPCn6m_y4dmqNnEn63csLQ-9)
+[**Progetto SuperMario**](https://drive.google.com/drive/u/2/folders/1JG1K9eyDDPCn6m_y4dmqNnEn63csLQ-9)
 
