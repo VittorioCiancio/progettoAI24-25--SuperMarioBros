@@ -71,3 +71,10 @@ Questo progetto rappresenta un punto di partenza per ulteriori esplorazioni nel 
 *   **Hardware**:
     *   Macchina Windows con GPU NVIDIA GeForce RTX 4050 Laptop GPU per l'addestramento di DDQN e PPO.
     *   Mac Studio con Chip Apple M2 Ultra per l'addestramento del modello PPO integrato con YOLOv5.
+
+
+## Accesso al Progetto Completo
+Per visualizzare il progetto completo (codice, dataset e risultati) è possibile accedere alla cartella condivisa su Google Drive:
+
+[**Link Google Drive**](https://drive.google.com/drive/u/2/folders/1JG1K9eyDDPCn6m_y4dmqNnEn63csLQ-9)
+
