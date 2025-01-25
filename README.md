@@ -1,71 +1,73 @@
-# Progetto Super Mario Bros IA
+# Progetto Super Mario Bros: Reinforcement Learning e Visione Artificiale
 
-## Descrizione del Progetto
-Questo progetto mira a implementare **tecniche avanzate di Reinforcement Learning (RL)** per addestrare un agente in grado di **giocare e completare autonomamente** un livello del classico videogioco Super Mario Bros [1]. L'obiettivo è esplorare l'efficacia di diversi algoritmi di RL e l'integrazione con sistemi di visione artificiale per migliorare le capacità dell'agente [2].
+Questo progetto nasce come elaborato per l'esame di Intelligenza Artificiale e si propone di esplorare le applicazioni del **Reinforcement Learning (RL)** in un ambiente dinamico e complesso: il videogioco **Super Mario Bros**. L'obiettivo principale è stato quello di sviluppare un agente autonomo in grado di apprendere e completare un livello di gioco attraverso tecniche avanzate di RL, integrando anche la visione artificiale per potenziare le capacità decisionali. Questo lavoro mira a valutare l'efficacia di diversi approcci, mettendo in luce sia i successi che le limitazioni incontrate.
 
-## Obiettivi
-Gli obiettivi principali del progetto includono [2, 3]:
-*   Implementazione e confronto di algoritmi di Reinforcement Learning, specificamente **DDQN (Deep Double Q-Network)** e **PPO (Proximal Policy Optimization)**.
-*   Integrazione di un sistema di visione artificiale basato su **YOLOv5** per fornire all'agente una comprensione più dettagliata dell'ambiente.
-*   Valutazione delle prestazioni dei modelli in termini di capacità di completare il livello e tempi di addestramento.
+## Contesto e Obiettivi del Progetto
+
+Il progetto si inserisce nel contesto dell'esame di Intelligenza Artificiale, con lo scopo di applicare tecniche avanzate di RL in un ambiente sfidante come Super Mario Bros. L'obiettivo principale era di sviluppare un agente capace di completare un livello del gioco in modo autonomo, ottimizzando le sue prestazioni attraverso l'addestramento con tecniche di RL avanzate. Nello specifico, ci siamo posti i seguenti sotto-obiettivi:
+
+*   **Implementazione e confronto di algoritmi di RL**: Abbiamo esaminato e confrontato due approcci principali, **DDQN (Deep Double Q-Network)** e **PPO (Proximal Policy Optimization)**, per valutarne i punti di forza e le debolezze in un contesto pratico.
+*   **Integrazione di un sistema di visione artificiale**: Abbiamo integrato **YOLOv5**, un framework per il riconoscimento visivo, per fornire all'agente informazioni dettagliate sull'ambiente e migliorare la qualità delle sue decisioni.
+
+L'intento non era solo quello di massimizzare le prestazioni dell'agente, ma anche di esplorare le sinergie tra RL e visione artificiale, aprendo la strada a nuove applicazioni in scenari complessi.
 
 ## Metodologia
-Il progetto è strutturato seguendo questi passaggi principali [4]:
-*   **Background Teorico:** Introduzione ai concetti fondamentali di Reinforcement Learning, DDQN, PPO e YOLOv5 [5].
-*   **Metodologia:** Descrizione dell'ambiente di lavoro (Gym e Gym-Super-Mario-Bros), creazione di un dataset personalizzato per YOLOv5, implementazione dei modelli di RL e integrazione con YOLOv5 [6, 7].
-*   **Analisi dei Risultati:** Valutazione delle prestazioni dei modelli, confronto tra DDQN, PPO e PPO+YOLOv5 [8].
-*   **Problemi e Soluzioni:** Discussione delle difficoltà incontrate e delle soluzioni adottate [9].
-*   **Conclusioni:** Riepilogo dei risultati principali e prospettive future [10].
 
-### Ambiente di Lavoro
-*   **Gym e Gym-Super-Mario-Bros:** Utilizzo dell'ambiente di simulazione del videogioco Super Mario Bros per l'addestramento dell'agente [11].
-*   **Livello:** SuperMarioBros-1-1-v0 [11].
-*   **Azioni:** Sono stati utilizzati set di azioni **SIMPLE_MOVEMENT** e **COMPLEX_MOVEMENT**, senza modifiche sostanziali all'ambiente [11, 12].
-*   **Wrapper:** Sono stati implementati wrapper personalizzati come **FrameStack**, **ResizeObservation**, **GrayscaleObservation** e **Reward Shaping** per ottimizzare l'apprendimento [12].
+Il progetto è stato strutturato seguendo un approccio metodologico ben definito:
 
-### Dataset YOLOv5
-*   **Creazione:** Dataset di circa 350 immagini, raccolte da frame di gioco e dataset preesistenti [13].
-*   **Annotazione:** Annotazione manuale tramite Roboflow, con 10 classi principali: castle, interactable, fm, fpole, hole, goomba, pipe, mr, sm, turtle [14, 15].
-*   **Suddivisione:** 85% delle immagini per il training, 15% per la validazione [16].
-*   **Addestramento:** YOLOv5l con parametri specifici (dimensione immagine 320x320, batch size 8, epoche 50) [17, 18].
+*   **Ambiente di lavoro**: Abbiamo utilizzato il framework **Gym** con il pacchetto **Gym-Super-Mario-Bros**, in particolare il livello iniziale SuperMarioBros-1-1-v0, senza apportare modifiche sostanziali all'ambiente. Abbiamo, però, introdotto wrapper personalizzati come **FrameStack**, **ResizeObservation** e **GrayscaleObservation** per semplificare l’elaborazione dei frame e fornire contesto temporale. È stato anche implementato un **reward shaping** per incentivare l’agente a progredire nel livello.
 
-### Implementazione dei Modelli
-*   **DDQN:** Implementazione con PyTorch, CNN per elaborare i frame di gioco, Replay Buffer, learning rate 0.0001, gamma 0.99, replay buffer size 100.000 [19, 20].
-*   **PPO:** Implementazione con Stable-Baselines3, due configurazioni principali: 512 passi con learning rate 0.0000005 e 2048 passi con learning rate 0.000005 [20, 21].
-*   **PPO + YOLOv5:** Integrazione tramite un wrapper che elabora i frame con YOLOv5, aggiungendo un canale di osservazione con i bounding box [22].
+*   **Dataset YOLOv5**: Per l'addestramento di YOLOv5, abbiamo creato un **dataset personalizzato di circa 350 immagini**, annotate con lo strumento **Roboflow**, e suddiviso in training (85%) e validazione (15%). Le 10 classi di oggetti annotate includono: castle, interactable, fm, fpole, hole, goomba, pipe, mr, sm, turtle. L'addestramento del modello YOLOv5 è avvenuto su una macchina Windows con GPU, con parametri quali dimensione immagine 320x320, batch size 8 e 50 epoche.
 
-## Risultati
-I principali risultati ottenuti sono:
-*   **DDQN:** Raggiunge una vittoria su 1000 episodi, con una convergenza lenta ma stabile [23, 24].
-*   **PPO (512 passi):** Ottiene 54 vittorie su 10 milioni di passi, ma con prestazioni variabili e instabili [24, 25].
-*   **PPO (2048 passi):** Non raggiunge nessuna vittoria [24, 26].
-*   **PPO + YOLOv5:** Non completa alcun livello, nonostante l'elevata accuratezza di YOLOv5 nel riconoscimento degli oggetti [27, 28].
-  *   Precisione del 94.2%, Recall del 100%, mAP@50-95 dell'87.6% [29].
+*   **Implementazione dei modelli**: I modelli DDQN e PPO sono stati implementati utilizzando **PyTorch** e **Stable-Baselines3**. Il modello DDQN si basa su una CNN per l'elaborazione dei frame e un replay buffer per migliorare l'efficienza dell'apprendimento.  Per il PPO, sono state utilizzate due configurazioni diverse: 512 passi con learning rate di 0.0000005, e 2048 passi con learning rate 0.000005. L'integrazione di YOLOv5 con PPO ha richiesto la creazione di un wrapper personalizzato per fornire all'agente un canale aggiuntivo con i bounding box degli oggetti rilevati.
 
-## Problemi Incontrati
-*   **Limitazioni Hardware:** Problemi con l'utilizzo della GPU su Mac, incompatibilità dei risultati YOLOv5 tra sistemi operativi [30].
-*   **Difficoltà nel Salto:** Incapacità di superare il terzo tubo da parte di tutti i modelli, nonostante tentativi di reward shaping e azioni personalizzate [31, 32].
-*   **Tempi di Addestramento:** Tempi lunghi per l'addestramento del modello DDQN [33].
-*   **Dataset YOLOv5:** Problemi di bilanciamento delle classi nel dataset [34].
+## Risultati e Analisi
 
-## Conclusioni
-Il progetto ha dimostrato il potenziale e le sfide dell'applicazione di tecniche avanzate di Reinforcement Learning e visione artificiale nel contesto di un videogioco. Sebbene alcuni modelli abbiano mostrato la capacità di apprendere strategie vincenti, rimangono margini di miglioramento soprattutto per quanto riguarda la stabilità e la generalizzazione delle strategie [35, 36].
+### Prestazioni dei modelli RL
 
-## Sviluppi Futuri
-*   Ottimizzazione degli iperparametri per PPO [37].
-*   Miglioramento del dataset YOLOv5, con un maggior numero di immagini e un bilanciamento delle classi [38].
-*   Esplorazione di modelli ibridi che combinino DDQN e PPO [38].
-*   Sperimentazione con tecniche di reward shaping avanzate e curiosity-driven exploration per superare ostacoli complessi [38].
-*   Ottimizzazione dell'integrazione tra RL e YOLOv5 per ridurre la complessità computazionale [39].
+L'addestramento del modello **DDQN** ha evidenziato una convergenza graduale, stabilizzando la lunghezza degli episodi intorno ai 500 passi. La ricompensa cumulativa è cresciuta progressivamente, e il modello è riuscito a completare il livello una volta su 1000 episodi, anche se in modo apparentemente casuale.
 
-## Strumenti e Hardware Utilizzati
-*   **Librerie e Framework:** PyTorch, Stable-Baselines3, YOLOv5l, OpenCV, Gym, CUDA [40].
-*   **Strumenti Dataset:** Roboflow [40].
-*   **Hardware:**
-    *   Macchina Windows con GPU NVIDIA GeForce RTX 4050 Laptop GPU per l'addestramento di DDQN e PPO [41].
-    *   Mac Studio con Chip Apple M2 Ultra per l'addestramento del modello PPO integrato con YOLOv5 [41].
+Il modello **PPO** è stato addestrato con due configurazioni:
+*   Con **512 passi** per aggiornamento, il modello ha mostrato un andamento non lineare nelle vittorie, totalizzando 54 successi su 10 milioni di passi, ma con prestazioni altalenanti.
+*   Con **2048 passi** per aggiornamento, il modello non ha ottenuto alcuna vittoria durante i 10 milioni di passi, evidenziando difficoltà nell'apprendimento di strategie efficaci.
 
-## Contatti
-*   Arcangeli Giovanni
-*   Ciancio Vittorio
-*   Di Maio Marco
+### Integrazione con YOLOv5
+
+L'integrazione di **PPO e YOLOv5** ha portato a risultati interessanti. YOLOv5 ha mostrato ottime performance nel riconoscimento degli oggetti, con una precisione del 94.2% e un recall del 100%. Tuttavia, l'agente addestrato con PPO e YOLOv5 non è riuscito a completare alcun livello, dimostrando difficoltà nel tradurre le informazioni visive in azioni vincenti.
+
+### Confronto tra i modelli
+
+In sintesi, i risultati ottenuti mostrano:
+
+*   Il modello **DDQN** ha mostrato una maggiore stabilità e robustezza, completando il livello una volta, anche se con tempi di addestramento lunghi.
+*   Il modello **PPO** con 512 passi ha ottenuto più vittorie (54), ma con prestazioni instabili. La configurazione con 2048 passi non ha prodotto risultati positivi.
+*   Il modello **PPO + YOLOv5**, nonostante le ottime performance di YOLOv5 nel riconoscimento degli oggetti, non è riuscito a completare il livello.
+
+## Sfide e Ostacoli Incontrati
+
+Durante il progetto, abbiamo incontrato diverse sfide:
+
+*   **Limitazioni hardware**: L'utilizzo limitato della GPU su Mac ha rallentato l'addestramento del modello PPO + YOLOv5. L'incompatibilità dei risultati di YOLOv5 tra Windows e Mac ha comportato la necessità di ripetere l'addestramento su Mac.
+*   **Difficoltà nel superare ostacoli specifici**: Nessun modello è stato in grado di superare in modo affidabile il salto del terzo tubo, il più alto del livello.
+*   **Tempi di addestramento**: Il modello DDQN ha richiesto tempi di addestramento molto lunghi per raggiungere la convergenza.
+*   **Bilanciamento del dataset YOLOv5**: Il dataset presentava un bilanciamento non ottimale delle classi, con un numero limitato di esempi per alcune categorie.
+
+## Conclusioni e Prospettive Future
+
+Nonostante le difficoltà, il progetto ha dimostrato il potenziale del Reinforcement Learning e della visione artificiale applicata ai videogiochi, aprendo la strada a possibili sviluppi futuri. Le principali direzioni per la ricerca futura includono:
+
+*   **Ottimizzazione degli iperparametri del PPO**: Analizzare in dettaglio le configurazioni del PPO (passi per aggiornamento, learning rate) per migliorare la stabilità e le prestazioni.
+*   **Miglioramento del dataset di YOLOv5**: Espandere il dataset e bilanciare le classi per un riconoscimento più accurato degli oggetti.
+*   **Esplorazione di modelli ibridi**: Combinare le capacità esplorative del PPO con la robustezza del DDQN.
+*   **Gestione di azioni complesse**: Sperimentare con reward shaping più mirati e tecniche di esplorazione avanzate per superare ostacoli critici.
+*   **Riduzione della complessità computazionale**: Ottimizzare l'integrazione tra RL e YOLOv5 per ridurre i tempi di addestramento senza compromettere le prestazioni.
+
+Questo progetto rappresenta un punto di partenza per ulteriori esplorazioni nel campo dell'intelligenza artificiale applicata al gaming, evidenziando sia le opportunità che le sfide da affrontare.
+
+## Strumenti Utilizzati
+
+*   **Librerie e Framework**: PyTorch, Stable-Baselines3, YOLOv5l, OpenCV, Gym, CUDA.
+*   **Strumenti per il dataset**: Roboflow per l'annotazione automatica.
+*   **Hardware**:
+    *   Macchina Windows con GPU NVIDIA GeForce RTX 4050 Laptop GPU per l'addestramento di DDQN e PPO.
+    *   Mac Studio con Chip Apple M2 Ultra per l'addestramento del modello PPO integrato con YOLOv5.
