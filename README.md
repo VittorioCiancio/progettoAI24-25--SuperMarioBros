@@ -1,6 +1,9 @@
 # Progetto Super Mario Bros: Reinforcement Learning e Visione Artificiale
 
-[Anteprima del Progetto](assets/demo_mario.mp4)
+<video width="480" height="270" controls>
+  <source src="assets/demo.mp4" type="video/mp4">
+  Il tuo browser non supporta la riproduzione del video.
+</video>
 
 Questo progetto nasce come elaborato per l'esame di Intelligenza Artificiale e si propone di esplorare le applicazioni del **Reinforcement Learning (RL)** in un ambiente dinamico e complesso: il videogioco **Super Mario Bros**. L'obiettivo principale è stato quello di sviluppare un agente autonomo in grado di apprendere e completare un livello di gioco attraverso tecniche avanzate di RL, integrando anche la visione artificiale per potenziare le capacità decisionali. Questo lavoro mira a valutare l'efficacia di diversi approcci, mettendo in luce sia i successi che le limitazioni incontrate.
 
