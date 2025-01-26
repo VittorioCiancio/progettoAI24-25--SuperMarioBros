@@ -2,6 +2,8 @@
 
 Questo progetto nasce come elaborato per l'esame di Intelligenza Artificiale e si propone di esplorare le applicazioni del **Reinforcement Learning (RL)** in un ambiente dinamico e complesso: il videogioco **Super Mario Bros**. L'obiettivo principale è stato quello di sviluppare un agente autonomo in grado di apprendere e completare un livello di gioco attraverso tecniche avanzate di RL, integrando anche la visione artificiale per potenziare le capacità decisionali. Questo lavoro mira a valutare l'efficacia di diversi approcci, mettendo in luce sia i successi che le limitazioni incontrate.
 
+<img src="https://media.githubusercontent.com/media/VittorioCiancio/progettoAI24-25--SuperMarioBros/main/Demo_Mario.gif" width="600">
+
 ## Contesto e Obiettivi del Progetto
 
 Il progetto si inserisce nel contesto dell'esame di Intelligenza Artificiale, con lo scopo di applicare tecniche avanzate di RL in un ambiente sfidante come Super Mario Bros. L'obiettivo principale era di sviluppare un agente capace di completare un livello del gioco in modo autonomo, ottimizzando le sue prestazioni attraverso l'addestramento con tecniche di RL avanzate. Nello specifico, ci siamo posti i seguenti sotto-obiettivi:
@@ -10,8 +12,6 @@ Il progetto si inserisce nel contesto dell'esame di Intelligenza Artificiale, co
 *   **Integrazione di un sistema di visione artificiale**: Abbiamo integrato **YOLOv5**, un framework per il riconoscimento visivo, per fornire all'agente informazioni dettagliate sull'ambiente e migliorare la qualità delle sue decisioni.
 
 L'intento non era solo quello di massimizzare le prestazioni dell'agente, ma anche di esplorare le sinergie tra RL e visione artificiale, aprendo la strada a nuove applicazioni in scenari complessi.
-
-<img src="https://media.githubusercontent.com/media/VittorioCiancio/progettoAI24-25--SuperMarioBros/main/Demo_Mario.gif" width="600">
 
 ## Metodologia
 
