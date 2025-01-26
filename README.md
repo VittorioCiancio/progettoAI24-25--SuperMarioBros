@@ -2,9 +2,11 @@
 
 Questo progetto nasce come elaborato per l'esame di Intelligenza Artificiale e si propone di esplorare le applicazioni del **Reinforcement Learning (RL)** in un ambiente dinamico e complesso: il videogioco **Super Mario Bros**. L'obiettivo principale è stato quello di sviluppare un agente autonomo in grado di apprendere e completare un livello di gioco attraverso tecniche avanzate di RL, integrando anche la visione artificiale per potenziare le capacità decisionali. Questo lavoro mira a valutare l'efficacia di diversi approcci, mettendo in luce sia i successi che le limitazioni incontrate.
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/VittorioCiancio/progettoAI24-25--SuperMarioBros/main/Demo_Mario.gif" width="600">
-</p>
+
+ <img src="https://raw.githubusercontent.com/VittorioCiancio/progettoAI24-25--SuperMarioBros/main/Demo_Mario.gif" width="600">
+
+
+
 
 ## Contesto e Obiettivi del Progetto
 
